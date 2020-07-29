@@ -44,7 +44,7 @@ Example Configuration File:
 
         Start Simulator Configuration File
         Version/Phase: 4.0
-        File Path: Test_5a.mdf
+        File Path: TestMetadata.mdf
         Quantum Number {msec}: 50
         CPU Scheduling Code: STR
         Processor cycle time {msec}: 5
@@ -58,7 +58,7 @@ Example Configuration File:
         Projector quantity: 4
         Hard drive quantity: 2
         Log: Log to File
-        Log File Path: logfile_1.lgf
+        Log File Path: logfile.lgf
         End Simulator Configuration File
 
 ## Memory Allocation Operation
