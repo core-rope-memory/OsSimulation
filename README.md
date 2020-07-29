@@ -7,29 +7,29 @@ This program simulates the core components of an operating system.
 3. Install `make`: `sudo apt install make`
 4. Compile the program using the Makefile: `make`
 5. Run the program on the provided config file: `./OsSim Config.conf`
-6. View the results of the simulation: `cat logfile_1.lgf`
+6. View the results of the simulation: `cat logfile.lgf`
 
 ## Metadata File
 These are the instructions that the simulation runs on. Change the metadata file to customize the simulation following the formatting guidelines below.
 
 Metadata codes:
-- `S` &ndash; Operating System, used with begin and finish
-- `A` &ndash; Program Application, used with begin and finish
-- `P` &ndash; Process, used with run
-- `I` &ndash; used with Input operation descriptors such as hard drive, keyboard, scanner
-- `O` &ndash; used with Output operation descriptors such as hard drive, monitor, projector
-- `M` &ndash; Memory, used with block, allocate
+- `S` &ndash; Operating System, used with `begin` and `finish`
+- `A` &ndash; Program Application, used with `begin` and `finish`
+- `P` &ndash; Process, used with `run`
+- `I` &ndash; used with Input operation descriptors such as `hard drive`, `keyboard`, `scanner`
+- `O` &ndash; used with Output operation descriptors such as `hard drive`, `monitor`, `projector`
+- `M` &ndash; Memory, used with `block`, `allocate`
 
 Metadata descriptors:
-`begin, finish, hard drive, keyboard, scanner, monitor, run, allocate, projector, block`
+`begin`, `finish`, `hard drive`, `keyboard`, `scanner`, `monitor`, `run`, `allocate`, `projector`, `block`
 
 The meta-data will always follow the format:
-`<META DATA CODE>(<META DATA DESCRIPTOR>)<NUMBER OF CYCLES>`
+`<META DATA CODE>{<META DATA DESCRIPTOR>}<NUMBER OF CYCLES>`
 
 For example, an input keyboard operation that runs for 13 cycles would look like the following:
-`I(keyboard)13`
+`I{keyboard}13`
 
-Example Metadata File:
+**Example Metadata File:**
 
         Start Program Meta-Data Code:
         S{begin}0; A{begin}0; P{run}11; M{allocate}2; A{finish}0;
@@ -38,7 +38,7 @@ Example Metadata File:
         End Program Meta-Data Code.
 
 ## Configuration File
-The configuration file sets up the parameters of the simulation. This will specify the various cycle times associated with each computer component, memory, and any other necessary information required to run the simulation correctly. All cycle times are specified in milliseconds. Log File Path is the name of the new file which will display the simulation's output. If the number of an input/output resource is not specified, it will be assumed as 1.
+The configuration file sets up the parameters of the simulation. This will specify the various cycle times associated with each computer component, memory, and any other necessary information required to run the simulation correctly. All cycle times are specified in milliseconds. `Log File Path` is the name of the new file which will display the simulation's output. If the number of an input/output resource is not specified, it will be assumed as 1.
 
 Example Configuration File:
 
@@ -66,7 +66,8 @@ Memory allocation is simulated by passing in a system memory size in the configu
 
 ## Input/Output Operations
 - The number of resources available for an input/output device (hard drives, keyboards, scanners, monitors, projectors) is set by the configuration file and access to these finite resources are limited by the use of counting semaphores.
-- Each I/O opeartion is simulated by a seperate thread that counts down the I/O operation time. The simulation polls the I/O thread untile the I/O thread completes simulating a blocking I/O operation.
+- resources are pulled from their queues under the protection of a mutex.
+- Each I/O opeartion is simulated by a seperate thread that counts down the I/O operation time. The simulation polls the I/O thread untill the I/O thread completes, simulating a blocking I/O operation.
 
 ## Simulation Output
 The results of the simulation are output to a logfile in the root directory of the repository. All operations are timestamped with microsecond resolution, and have a decription of the operation's action.
