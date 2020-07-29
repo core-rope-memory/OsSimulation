@@ -29,8 +29,37 @@ The meta-data will always follow the format:
 For example, an input keyboard operation that runs for 13 cycles would look like the following:
 `I(keyboard)13`
 
+Example Metadata File:
+
+        Start Program Meta-Data Code:
+        S{begin}0; A{begin}0; P{run}11; M{allocate}2; A{finish}0;
+        A{begin}0; O{hard drive}6; A{finish}0; A{begin}0; P{run}4;
+        I{keyboard}18; M{allocate}4; P{run}6; A{finish}0; S{finish}0;
+        End Program Meta-Data Code.
+
 ## Configuration File
 The configuration file sets up the parameters of the simulation. This will specify the various cycle times associated with each computer component, memory, and any other necessary information required to run the simulation correctly. All cycle times are specified in milliseconds. Log File Path is the name of the new file which will display the simulation's output. If the number of an input/output resource is not specified, it will be assumed as 1.
+
+Example Configuration File:
+
+        Start Simulator Configuration File
+        Version/Phase: 4.0
+        File Path: Test_5a.mdf
+        Quantum Number {msec}: 50
+        CPU Scheduling Code: STR
+        Processor cycle time {msec}: 5
+        Monitor display time {msec}: 22
+        Hard drive cycle time {msec}: 150
+        Projector cycle time {msec}: 550
+        Keyboard cycle time {msec}: 60
+        Memory cycle time {msec}: 10
+        System memory {kbytes}: 2048
+        Memory block size {kbytes}: 128
+        Projector quantity: 4
+        Hard drive quantity: 2
+        Log: Log to File
+        Log File Path: logfile_1.lgf
+        End Simulator Configuration File
 
 ## Memory Allocation Operation
 Memory allocation is simulated by passing in a system memory size in the configuration file. Blocks of memory of a size specified in the metadata file are added to their appropriate memory addresses. If the allocation of a block of memory will overflow the specified system memory size, the memory address is reset to 0.
