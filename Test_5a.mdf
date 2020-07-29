@@ -1,0 +1,5 @@
+Start Program Meta-Data Code:
+S{begin}0; A{begin}0; P{run}11; M{allocate}2; A{finish}0;
+A{begin}0; O{hard drive}6; A{finish}0; A{begin}0; P{run}4;
+I{keyboard}18; M{allocate}4; P{run}6; A{finish}0; S{finish}0;
+End Program Meta-Data Code.
