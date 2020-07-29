@@ -760,6 +760,7 @@ void OSprocessRunner::inputOutput(int time, std::string aDescriptor, std::string
 void* OSprocessRunner::ioThreadHelper(void *obj) {
     OSprocessRunner *myObj = reinterpret_cast<OSprocessRunner *>(obj);
     myObj->ioThreadFunction();
+    return myObj;
 }
 
 /** 
@@ -829,6 +830,7 @@ void OSprocessRunner::countDown(int time) {
 void* OSprocessRunner::countDownThreadHelper(void *obj) {
     OSprocessRunner *myObj = reinterpret_cast<OSprocessRunner *>(obj);
     myObj->countDownThreadFunction();
+    return myObj;
 }
 
 /**
@@ -872,6 +874,7 @@ void OSprocessRunner::quantumTimer() {
 void* OSprocessRunner::quantumTimerHelper(void *obj) {
     OSprocessRunner *myObj = reinterpret_cast<OSprocessRunner *>(obj);
     myObj->quantumTimerThreadFunction();
+    return myObj;
 }
 
 
@@ -950,6 +953,7 @@ void OSprocessRunner::loadMDF() {
 void* OSprocessRunner::loadMDFHelper(void *obj) {
     OSprocessRunner *myObj = reinterpret_cast<OSprocessRunner *>(obj);
     myObj->loadMDFThreadFunction();
+    return myObj;
 }
 
 
