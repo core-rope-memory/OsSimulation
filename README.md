@@ -78,5 +78,39 @@ Memory allocation is simulated by passing in a system memory size in the configu
 ## Simulation Output
 The results of the simulation are output to a logfile in the root directory of the repository. All operations are timestamped with microsecond resolution, and have a decription of the operation's action.
 
+**Example Log File:**
+
+        0.000000 - Simulator program starting
+        0.072131 - OS: preparing process 1
+        0.072135 - OS: starting process 1
+        0.072137 - Process 1: start processing action
+        0.127241 - Process 1: end processing action
+        0.127256 - Process 1: allocating memory
+        0.147405 - Process 1: memory allocated at 0x00000000
+        0.147430 - OS: End process 1
+        0.147437 - OS: preparing process 2
+        0.147437 - OS: starting process 2
+        0.147446 - Process 2: start hard drive output on HDD_0
+        1.047621 - Process 2: end hard drive output
+        1.047684 - Process 2: Process interrupted by STR scheduling algorithm.
+        1.047700 - OS: End process 2
+        1.047710 - OS: preparing process 4
+        1.047710 - OS: starting process 4
+        1.047712 - Process 4: start processing action
+        1.102790 - Process 4: end processing action
+        1.102834 - Process 4: Process interrupted by STR scheduling algorithm.
+        1.102844 - Process 4: allocating memory
+        1.122926 - Process 4: memory allocated at 0x00000080
+        1.122955 - OS: End process 4
+        1.122974 - OS: preparing process 10
+        1.122976 - OS: starting process 10
+        1.122977 - Process 10: start processing action
+        1.178376 - Process 10: end processing action
+        1.178408 - Process 10: allocating memory
+        1.198777 - Process 10: memory allocated at 0x00000100
+        1.198799 - OS: End process 10
+        1.198810 - OS: preparing process 13
+        ...
+
 ## Scheduling
 The simulator can use two interruptible scheduling algorithms, Round Robin or Shortest Time Remaining. The metadata file is reloaded every 100ms 10 times to simulate a processes' arrive time.
