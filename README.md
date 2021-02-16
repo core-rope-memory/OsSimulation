@@ -67,6 +67,9 @@ Example Configuration File:
         Log File Path: logfile.lgf
         End Simulator Configuration File
 
+## Scheduling
+The simulator can use two interruptible scheduling algorithms, Round Robin or Shortest Time Remaining. The metadata file is reloaded every 100ms 10 times to simulate a processes' arrive time.
+
 ## Memory Allocation Operation
 Memory allocation is simulated by passing in a system memory size in the configuration file. Blocks of memory of a size specified in the metadata file are added to their appropriate memory addresses. If the allocation of a block of memory will overflow the specified system memory size, the memory address is reset to 0.
 
@@ -111,6 +114,3 @@ The results of the simulation are output to a logfile in the root directory of t
         1.198799 - OS: End process 10
         1.198810 - OS: preparing process 13
         ...
-
-## Scheduling
-The simulator can use two interruptible scheduling algorithms, Round Robin or Shortest Time Remaining. The metadata file is reloaded every 100ms 10 times to simulate a processes' arrive time.
