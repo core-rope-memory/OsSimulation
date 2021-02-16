@@ -1,5 +1,11 @@
 # OsSimulation
-This program simulates the core components of an operating system.
+
+## Overview
+The goal of this project was to create a program that simulates the functions of an operating system, with an emphasis on how different scheduling algorithms handle running multiple processes concurrently, and how an operating system allocates limited resources to multiple processes. The program is written in C++. Input/output operations are simulated by separate threads. The thread counts down the amount of time appropriate for the I/O device, then returns to the main thread and releases its I/O resource.
+
+The program uses two text files to run. The metadata file contains the sequence of instructions that the simulations will follow. An instruction contains a code, a descriptor, and the number of clock cycles the instruction requires. The configuration file sets the parameters of the simulation. The configuration specifies the cycle times of the OS and I/O resources, the scheduling algorithm used, the number of I/O resources available to the OS, the output log file path, etc.
+
+The simulation outputs a log file detailing how the simulation unfolded. Each line of the log file contains an event. Each event consists of the timestamp when the event occured (milliseconds from the start of the simulation), the type of event (either an OS event or a specific process event), and a description about what occured during the event. The log file shows how the simulation will shuffle the execution of multiple process tasks depending on the scheduling algorithm used.
 
 ## Setup (Ubuntu or Linux Subsystem for Windows)
 1. Open Bash terminal window and navigate to the repository's root directory.
