@@ -70,6 +70,17 @@ Example Configuration File:
 ## Scheduling
 The simulator can use two interruptible scheduling algorithms, Round Robin or Shortest Time Remaining. The metadata file is reloaded every 100ms 10 times to simulate a processes' arrive time.
 
+### Round Robin
+- Processes are pulled from a queue and run for a certain amount of time (quantum number) before being placed to the back of the queue.
+- Prevents any one process from dominating the CPU.
+- No priorities.
+- Lost of time context switching.
+
+### Shortest Remaining Time
+- Processes with the shortest remaining execution time will be executed first.
+- Every time a process is added to the queue, the queue is sorted by execution time.
+- This can cause starvation for long running processes if continually adding short processes to queue.
+
 ## Memory Allocation Operation
 Memory allocation is simulated by passing in a system memory size in the configuration file. Blocks of memory of a size specified in the metadata file are added to their appropriate memory addresses. If the allocation of a block of memory will overflow the specified system memory size, the memory address is reset to 0.
 
